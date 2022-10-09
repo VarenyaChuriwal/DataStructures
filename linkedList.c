@@ -8,6 +8,21 @@ struct node {
 
 typedef struct node * nodeAddress;
 
+nodeAddress chunkReverseList(nodeAddress head, int k) {
+    nodeAddress temp = NULL, new_head = NULL, head_copy = head;
+    // Reverse the chunk
+    for (int i = 0; i < k; i++) {
+        temp = head -> next;
+        head->next = new_head;
+        new_head = head;
+        head = temp;
+    }
+    // Point the last element of chunk to the first element of remaining array
+    head_copy ->next = head;
+
+    return (new_head);
+}
+
 nodeAddress reverseList(nodeAddress head) {
     nodeAddress temp = NULL, new_head = NULL;
     while(head != NULL) {
@@ -65,8 +80,16 @@ void main() {
     // Print linked list
     printList(head);
     // Reverse Linked List
-    nodeAddress reversed_head = reverseList(head);
-    printList(reversed_head);
+    head = reverseList(head);
+    printList(head);
+
+    // Chunk reverse list
+    printf("Enter size of chunk to reverse\n");
+    int k;
+    scanf("%i", &k);
+    head = chunkReverseList(head, k);
+    printList(head);
+
     // Free linked list
     freeList(head);
 }

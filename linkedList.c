@@ -8,6 +8,17 @@ struct node {
 
 typedef struct node * nodeAddress;
 
+nodeAddress reverseList(nodeAddress head) {
+    nodeAddress temp = NULL, new_head = NULL;
+    while(head != NULL) {
+        temp = head -> next;
+        head->next = new_head;
+        new_head = head;
+        head = temp;
+    }
+    return (new_head);
+}
+
 void freeList(nodeAddress head) {
     nodeAddress temp = head;
     while(head!= NULL) {
@@ -22,6 +33,7 @@ void printList(nodeAddress head) {
         printf("%i ",head->val);
         head = head->next;
     }
+    printf("\n");
 }
 
 nodeAddress generateLinkedList(int values[], int n) {
@@ -52,6 +64,9 @@ void main() {
     nodeAddress head = generateLinkedList(values, n);
     // Print linked list
     printList(head);
+    // Reverse Linked List
+    nodeAddress reversed_head = reverseList(head);
+    printList(reversed_head);
     // Free linked list
     freeList(head);
 }

@@ -67,10 +67,13 @@ nodeAddress generateLinkedList(int values[], int n) {
     return head;
 }
 
-void main() {
+int main() {
     printf("Enter length of linked list\n");
     int n;
     scanf("%i",&n);
+    // Check if length > 0
+    if (n <= 0)
+        return 1;
     int values[n];
     for (int i=0;i<n;i++) {
         printf("Value:");
@@ -92,4 +95,5 @@ void main() {
 
     // Free linked list
     freeList(head);
+    return 0;
 }

@@ -9,6 +9,11 @@ struct node {
 typedef struct node * nodeAddress;
 
 nodeAddress chunkReverseList(nodeAddress head, int k) {
+    if (head == NULL) {
+        printf("Cannot chunk reverse empty list");
+        return head;
+    }
+
     nodeAddress temp = NULL, new_head = NULL, head_copy = head;
     // Reverse the chunk
     for (int i = 0; i < k; i++) {
@@ -24,6 +29,10 @@ nodeAddress chunkReverseList(nodeAddress head, int k) {
 }
 
 nodeAddress reverseList(nodeAddress head) {
+    if (head == NULL) {
+        printf("Cannot reverse empty list");
+        return head;
+    }
     nodeAddress temp = NULL, new_head = NULL;
     while(head != NULL) {
         temp = head -> next;
@@ -44,6 +53,10 @@ void freeList(nodeAddress head) {
 }
 
 void printList(nodeAddress head) {
+    // Check if lsit empty
+    if (head == NULL)
+        printf("List is empty");
+
     while(head!= NULL) {
         printf("%i ",head->val);
         head = head->next;
@@ -57,6 +70,7 @@ nodeAddress generateLinkedList(int values[], int n) {
     head->val = values[0];
     head->next = NULL;
     nodeAddress temp = head;
+
     // Iterate over values 
     for(int i = 1; i<n; i++) {
         temp->next = malloc(sizeof(struct node));  // allocate memory for a node
@@ -71,9 +85,11 @@ int main() {
     printf("Enter length of linked list\n");
     int n;
     scanf("%i",&n);
+
     // Check if length > 0
     if (n <= 0)
         return 1;
+
     int values[n];
     for (int i=0;i<n;i++) {
         printf("Value:");
@@ -90,6 +106,11 @@ int main() {
     printf("Enter size of chunk to reverse\n");
     int k;
     scanf("%i", &k);
+
+    // Check if chunk is too large
+    if (k > n)
+        return 1;
+
     head = chunkReverseList(head, k);
     printList(head);
 

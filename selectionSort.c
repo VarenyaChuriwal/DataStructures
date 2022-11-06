@@ -178,7 +178,7 @@ int main() {
     // Sort List
     head = sortList(head);
     // Print sorted list
-    printf("Sorted Array = ");
+    printf("Sorted List = ");
     printList(head);
 
     return 0;

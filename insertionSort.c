@@ -30,9 +30,9 @@ void main() {
     scanf("%i",&n);
     int values[n];
     for (int i=0;i<n;i++) {
-        // printf("Value:");
-        // scanf("%i",&values[i]);
-        values[i] = rand();
+        printf("Value:");
+        scanf("%i",&values[i]);
+        // values[i] = rand();
     }
 
     // Print unsorted array

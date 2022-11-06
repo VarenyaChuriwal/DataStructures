@@ -23,16 +23,21 @@ void sortArray(int values[], int n) {
     }
 }
 
-void main() {
+int main() {
     // Accept array as user input
     printf("Enter length of array list\n");
     int n;
     scanf("%i",&n);
+
+    // Check if length > 0
+    if (n <= 0)
+        return 1;
+
     int values[n];
     for (int i=0;i<n;i++) {
-        printf("Value:");
-        scanf("%i",&values[i]);
-        // values[i] = rand();
+        // printf("Value:");
+        // scanf("%i",&values[i]);
+        values[i] = rand();
     }
 
     // Print unsorted array
@@ -43,4 +48,6 @@ void main() {
     // Print sorted array
     printf("Sorted Array = ");
     printArray(values, n);
+
+    return 0;
 }

@@ -14,10 +14,11 @@ void printList(nodeAddress head) {
     if (head == NULL)
         printf("List is empty");
 
-    while(head!= NULL) {
-        printf("%i ",head->val);
+    while(head->next!= NULL) {
+        printf("%i -> ",head->val);
         head = head->next;
     }
+    printf("%i ",head->val);
     printf("\n");
 }
 
